@@ -1,0 +1,22 @@
+summary: Get all series
+consumes:
+  - application/json
+responses:
+  '200':
+    description: List of series
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          color:
+            type: string
+            example: "#FF0000"
+          min_value:
+            type: number
+          max_value:
+            type: number

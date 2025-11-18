@@ -1,0 +1,58 @@
+summary: Update an existing measurement
+consumes:
+  - application/json
+security:
+  - JWT: []
+parameters:
+  - in: path
+    name: id
+    type: integer
+    required: true
+    description: Measurement ID
+  - in: body
+    name: body
+    description: Fields to update
+    required: true
+    schema:
+      type: object
+      properties:
+        value:
+          type: number
+          example: 50.0
+        timestamp:
+          type: string
+          format: date-time
+          example: '2025-11-18T15:00:00'
+responses:
+  '200':
+    description: Measurement updated
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Measurement updated
+  '400':
+    description: Value out of range
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Value 100 out of range
+  '403':
+    description: Admins only
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Admins only
+  '404':
+    description: Measurement not found
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Measurement not found

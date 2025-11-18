@@ -1,0 +1,31 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 992px) {
+  h5 {
+    text-align: center;
+  }
+  table {
+    font-size: 0.9rem;
+  }
+}
+
+@media print {
+  .navbar, button, input, select {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+}
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,36 @@
+summary: Delete a series
+consumes:
+  - application/json
+security:
+  - JWT: []
+parameters:
+  - in: path
+    name: series_id
+    type: integer
+    required: true
+    description: ID of the series to delete
+responses:
+  '200':
+    description: Series deleted
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Series deleted
+  '403':
+    description: Admins only
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Admins only
+  '404':
+    description: Series not found
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Series not found

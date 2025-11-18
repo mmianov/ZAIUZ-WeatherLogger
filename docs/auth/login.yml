@@ -1,0 +1,38 @@
+summary: User login
+consumes:
+  - application/json
+parameters:
+  - in: body
+    name: body
+    description: JSON object containing username and password
+    required: true
+    schema:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          example: user1
+        password:
+          type: string
+          example: Pass@123
+responses:
+  '200':
+    description: Successfully logged in
+    schema:
+      type: object
+      properties:
+        token:
+          type: string
+        role:
+          type: string
+  '401':
+    description: Invalid credentials
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Invalid credentials

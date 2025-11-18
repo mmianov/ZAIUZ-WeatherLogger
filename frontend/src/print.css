@@ -1,0 +1,40 @@
+
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  #print-table, #print-table * {
+    visibility: visible !important;
+  }
+
+  #print-table {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100% !important;
+  }
+
+  #print-table table {
+    background: white !important;
+    color: black !important;
+    border-collapse: collapse !important;
+  }
+
+  #print-table th {
+    background: #cde4ff !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+  }
+
+  #print-table td {
+    background: white !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+  }
+
+  #print-table table tr:nth-child(even) td {
+    background: #e9f4ff !important;
+  }
+
+}

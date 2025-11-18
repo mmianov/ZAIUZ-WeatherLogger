@@ -1,0 +1,46 @@
+summary: Add a new series
+consumes:
+  - application/json
+security:
+  - JWT: []
+parameters:
+  - in: body
+    name: body
+    description: Series data
+    required: true
+    schema:
+      type: object
+      required:
+        - name
+        - min_value
+        - max_value
+      properties:
+        name:
+          type: string
+          example: Warszawa
+        color:
+          type: string
+          example: "#FF0000"
+        min_value:
+          type: number
+          example: 0
+        max_value:
+          type: number
+          example: 100
+responses:
+  '201':
+    description: Series added
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Series added
+  '403':
+    description: Admins only
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Admins only

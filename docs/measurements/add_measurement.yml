@@ -1,0 +1,60 @@
+summary: Add a new measurement
+consumes:
+  - application/json
+security:
+  - JWT: []
+parameters:
+  - in: body
+    name: body
+    description: Measurement data
+    required: true
+    schema:
+      type: object
+      required:
+        - series_id
+        - value
+        - timestamp
+      properties:
+        series_id:
+          type: integer
+          example: 1
+        value:
+          type: number
+          example: 42.5
+        timestamp:
+          type: string
+          format: date-time
+          example: '2025-11-18T14:30:00'
+responses:
+  '201':
+    description: Measurement added
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Measurement added
+  '400':
+    description: Value out of range
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Value 100 out of range
+  '403':
+    description: Admins only
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Admins only
+  '404':
+    description: Series not found
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Series not found

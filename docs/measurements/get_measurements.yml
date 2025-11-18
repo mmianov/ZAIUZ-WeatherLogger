@@ -1,0 +1,36 @@
+summary: Get measurements
+consumes:
+  - application/json
+parameters:
+  - in: query
+    name: series_id
+    type: string
+    required: false
+    description: Comma-separated list of series IDs (e.g., 1,2,3)
+  - in: query
+    name: from
+    type: string
+    required: false
+    description: Start datetime filter (ISO format)
+  - in: query
+    name: to
+    type: string
+    required: false
+    description: End datetime filter (ISO format)
+responses:
+  '200':
+    description: List of measurements
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          series_id:
+            type: integer
+          timestamp:
+            type: string
+            format: date-time
+          value:
+            type: number

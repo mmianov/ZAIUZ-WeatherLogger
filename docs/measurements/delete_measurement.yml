@@ -1,0 +1,36 @@
+summary: Delete a measurement
+consumes:
+  - application/json
+security:
+  - JWT: []
+parameters:
+  - in: path
+    name: id
+    type: integer
+    required: true
+    description: Measurement ID
+responses:
+  '200':
+    description: Measurement deleted
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Measurement deleted
+  '403':
+    description: Admins only
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Admins only
+  '404':
+    description: Measurement not found
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Measurement not found

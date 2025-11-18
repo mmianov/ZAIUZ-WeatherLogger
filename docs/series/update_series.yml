@@ -1,0 +1,55 @@
+summary: Update an existing series
+consumes:
+  - application/json
+security:
+  - JWT: []
+parameters:
+  - in: path
+    name: series_id
+    type: integer
+    required: true
+    description: ID of the series to update
+  - in: body
+    name: body
+    description: Fields to update
+    required: true
+    schema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Humidity
+        color:
+          type: string
+          example: "#00FF00"
+        min_value:
+          type: number
+          example: 0
+        max_value:
+          type: number
+          example: 100
+responses:
+  '200':
+    description: Series updated
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Series updated
+  '403':
+    description: Admins only
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Admins only
+  '404':
+    description: Series not found
+    schema:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Series not found
