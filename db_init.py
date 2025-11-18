@@ -3,13 +3,19 @@ from database import db
 from models import User, Series, Measurement
 from datetime import datetime, timedelta
 import bcrypt, random
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 app = create_app()
 with app.app_context():
     db.drop_all()
     db.create_all()
 
-    password = bcrypt.hashpw("FhX2mk9xmA0!".encode(), bcrypt.gensalt()).decode()
+    admin_password = os.getenv("ADMIN_PASSWORD")
+    password = bcrypt.hashpw(admin_password.encode(), bcrypt.gensalt()).decode()
     admin = User(username="admin", password_hash=password, role="admin")
     db.session.add(admin)
 
